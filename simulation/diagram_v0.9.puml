@@ -1,0 +1,71 @@
+@startuml
+'!theme plain
+top to bottom direction
+'skinparam linetype ortho
+
+class Enum as "enum.Enum" {
+
+}
+class Account as "계좌" {
+    (simulation.account.Account)
+}
+class AssetPosition as "자산 포지션" {
+   (simulation.asset_position.AssetPosition)
+}
+'   __init__(self, ticker: str, position: int, latest_price: float, cost: float)
+
+class Broker as "중개인" {
+   (simulation.broker.Broker)
+}
+
+namespace order{
+class Order as "주문" {
+   (simulation.order.Order)
+}
+
+class OrderDirection as "주문의 거래 방향" {
+   (simulation.order.OrderDirection)
+}
+
+class OrderStatus as "주문의 거래 상태" {
+   (simulation.order.OrderStatus)
+}
+
+class OrderType as "주문의 종류" {
+   (simulation.order.OrderType)
+}
+}
+
+class Transaction as "거래" {
+   (simulation.transaction.Transaction)
+}
+
+class Enum as "열거형 클래스" {
+    (enum.Enum)
+}
+
+'Enum <|-- OrderDirection
+'Enum <|-- OrderStatus
+'Enum <|-- OrderType
+
+OrderDirection --|> Enum
+OrderStatus --|> Enum
+OrderType --|> Enum
+
+Order --> OrderDirection
+Order --> OrderStatus
+Order --> OrderType
+
+Transaction --> OrderDirection
+
+Broker ..> Order
+Broker ..> Transaction
+
+Account --> Order
+Account --> AssetPosition
+
+'left to right direction
+'e ..> f
+'c --> d
+'a --|> b
+@enduml
