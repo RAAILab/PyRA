@@ -40,7 +40,7 @@ CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
 ##  파일 구성
 
 ### 실행파일
-|구분   |파일                       |설명                        |
+|구분|파일                       |설명                        |
 |:--        |:--        |:--                          |
 |공통 | 	/data/data_loader.py	| Pykrx를 이용한 주가 데이터 스크랩핑 |
 |3장 | 	3. mean_variance.ipynb	| 평균분산모델을 이용한 자산배분 전략 |
