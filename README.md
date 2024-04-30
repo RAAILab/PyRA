@@ -3,34 +3,34 @@
 
 ## 1. 설치하기
 
-1) 파이썬 실행과 본 저장소를 가져오기 위한 툴을 설치합니다. 
+파이썬 실행과 본 저장소를 가져오기 위한 툴을 설치합니다. 
 
 1. [아나콘다](https://www.anaconda.com/products/distribution) (or [미니콘다](https://docs.conda.io/en/latest/miniconda.html)) 설치 
 2. [깃](https://git-scm.com/downloads) 설치
 3. GPU에 호환되는 CUDA와 cuDNN 설치
 
-2) 터미널에서 다음 명령을 입력해서 본 저장소를 가져옵니다
+터미널에서 다음 명령을 입력해서 본 저장소를 가져옵니다
 
     $ git clone https://github.com/RAAILab/PyRA.git
     $ cd pyRA
 
-3) 다음 명령으로 가상 환경을 생성합니다.
+다음 명령으로 가상 환경을 생성합니다.
 
     $ conda create -n pyra python==3.9.7
 
-4) 가상 환경을 활성화하고 패키지를 설치합니다.
+가상 환경을 활성화하고 패키지를 설치합니다.
 
     $ conda activate pyra
     $ pip install -r requirements.txt
 
-5) CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
+CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
 예를 들어, 1.13.1 버전의 PyTorch와 11.7 버전의 CUDA를 설치하려면 다음과 같은 명령을 실행합니다.
 
     $ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
     
 설치 명령어는 https://pytorch.org/get-started/previous-versions/ 를 참조하세요.
 
-6) 마지막으로 커널을 추가하고 주피터 노트북을 실행합니다.
+마지막으로 커널을 추가하고 주피터 노트북을 실행합니다.
 
     $ pip install ipykernel
     $ python -m ipykernel install --user --name=pyra
