@@ -44,34 +44,8 @@ CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
 
 
 ## 2. 파일 구성
-### 2.1 시뮬레이션 관련 파일
-|파일             |설명                        |
-|:--        |:--                          |
-| order.py	| 주문 클래스 정의
-| transaction.py | 거래 클래스 정의
-| broker.py	| 중개인 클래스 정의
-| asset_position.py	| 자산 포지션 클래스 정의
-| account.py	| 계좌 클래스 정의
-| config.py	| 수수료, 슬리피지, 거래량 관련 파라미터 설정
-| utility.py	| 유틸리티 함수 정의 
-•	종목이름을 종목코드(ticker)로 변환
-•	시뮬레이션 기간을 룩백 기간을 포함하는 기간으로 변환
-•	주문 목표 수량 및 비율 계산
-•	리밸런싱 |
-| metric.py	| 투자 성능 지표 정의
-•	연평균 복리 성장률(CAGR)
-•	최대손실낙폭(MDD)
-•	샤프 비율(Sharpe Ratio)
-•	소티노 비율(Sortino Ratio) |
-| visualize.py	| 시각화 관련 함수
-•	누적 수익률 곡선
-•	단기 수익률 변동 막대그래프 
-•	상대 수익률 막대그래프
-•	개별 자산 누적 수익 곡선
-•	자산편입비중 영역 차트|
-| diagram.puml	| 클래스 다이어그램 UML 파일 |
 
-### 2.2 장 별 실행파일
+### 2.1 실행파일
 |구분   |파일                       |설명                        |
 |:--        |:--        |:--                          |
 |공통 | 	/data/data_loader.py	| Pykrx를 이용한 주가 데이터 스크랩핑 |
@@ -91,6 +65,29 @@ CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
 |	 | /dl_models/scinet.py	|SciNet 모델 |
 |9장 | 9. black_litterman.ipynb	| 블랙 리터만 모델을 이용한 자산배분 전략 |
 |	 | 9. risk_parity.ipynb	| 리스크 패러티 모델을 이용한 자산배분 전략 |
+
+### 2.1 시뮬레이션 관련 파일
+|파일             |설명                        |
+|:--        |:--                          |
+| order.py	| 주문 클래스 정의
+| transaction.py | 거래 클래스 정의
+| broker.py	| 중개인 클래스 정의
+| asset_position.py	| 자산 포지션 클래스 정의
+| account.py	| 계좌 클래스 정의
+| config.py	| 수수료, 슬리피지, 거래량 관련 파라미터 설정
+| utility.py	| 유틸리티 함수 정의 * 종목이름을 종목코드(ticker)로 변환 * 시뮬레이션 기간을 룩백 기간을 포함하는 기간으로 변환 * 주문 목표 수량 및 비율 계산 * 리밸런싱 |
+| metric.py	| 투자 성능 지표 정의
+* 연평균 복리 성장률(CAGR)
+* 최대손실낙폭(MDD)
+* 샤프 비율(Sharpe Ratio)
+* 소티노 비율(Sortino Ratio) |
+| visualize.py	| 시각화 관련 함수
+* 누적 수익률 곡선
+* 단기 수익률 변동 막대그래프 
+* 상대 수익률 막대그래프
+* 개별 자산 누적 수익 곡선
+* 자산편입비중 영역 차트|
+| diagram.puml	| 클래스 다이어그램 UML 파일 |
 
 # 자주 묻는 질문
 
