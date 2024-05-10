@@ -16,17 +16,21 @@
 
 다음 명령으로 가상 환경을 생성합니다.
 
-    $ conda create -n pyra python==3.9.7
+    $ conda create -n pyra python==3.9
 
 가상 환경을 활성화하고 패키지를 설치합니다.
 
-    $ conda activate pyra
+    $ conda activate PyRA
     $ pip install -r requirements.txt
 
 CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
 예를 들어, 1.13.1 버전의 PyTorch와 11.7 버전의 CUDA를 설치하려면 다음과 같은 명령을 실행합니다.
 
     $ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
+
+만일 GPU가 없는 환경이라면 다음과 같은 명령을 실행합니다.
+
+    $ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 cpuonly -c pytorch
     
 설치 명령어는 https://pytorch.org/get-started/previous-versions/ 를 참조하세요.
 
@@ -83,7 +87,7 @@ CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
 
 **어떤 파이썬 버전을 사용해야 하나요?**
 
-Python 3.9.7을 권장합니다. 위의 설치 가이드를 따르면 이 버전이 설치됩니다.
+Python 3.9를 권장합니다. 위의 설치 가이드를 따르면 3.9 버전이 설치됩니다. Python 3.8 이상의 버전이면 모두 작동합니다. 다만 Python 3.10 이상의 버전을 사용할 때에는 호환되는 라이브러리 버전을 설정해야 합니다.
 
 **어떤 pytorch 버전을 사용해야 하나요?**
 
