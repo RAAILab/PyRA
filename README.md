@@ -22,7 +22,7 @@
 
 가상 환경을 활성화하고 패키지를 설치합니다.
 
-    $ conda activate PyRA
+    $ conda activate pyra
     $ pip install -r requirements.txt
 
 CUDA 및 cuDNN 버전에 맞는 PyTorch를 설치합니다. <br>
