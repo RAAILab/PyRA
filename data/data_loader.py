@@ -111,7 +111,7 @@ class PykrxDataLoader:
                 'low': 'min',
                 'close': 'last',
                 'volume': 'sum',
-                'trading_value': 'sum',
+                # 'trading_value': 'sum',
             }
             data = data.groupby('ticker').resample(freq).apply(rule).reset_index(level=0)
         data.__setattr__('frequency', freq)
