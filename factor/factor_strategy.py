@@ -276,7 +276,7 @@ def simulate_factor(ohlcv_data: pd.DataFrame,
 
 if __name__ == '__main__':
     # 데이터 시작과 끝 날짜 정의
-    fromdate = '2020-04-01'
+    fromdate = '2013-04-01'
     todate = '2021-12-30'
 
     # 투자할 종목 후보 정의
