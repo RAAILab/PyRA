@@ -34,7 +34,7 @@ def calculate_momentum(ohlcv_data: pd.DataFrame,
                        skip_period: int) -> pd.DataFrame:
     # 데이터 재구조화(OHLCV)
     data = ohlcv_data[['close', 'ticker']].reset_index().set_index(
-        ['ticker', 'date']).unstack(level=0)
+        ['ticker', 'date']).unstack(level=0)['close']
 
     # 팩터 계산(모멘텀)
     momentum_data = data.shift(periods=skip_period).rolling(
@@ -135,7 +135,7 @@ def calculate_lowvol(ohlcv_data: pd.DataFrame,
                      lookback_period: int) -> pd.DataFrame:
     # 데이터 재구조화
     data = ohlcv_data[['close', 'ticker']].reset_index().set_index(
-        ['ticker', 'date']).unstack(level=0)
+        ['ticker', 'date']).unstack(level=0)['close']
 
     # 팩터 계산(표준편차)
     std_data = data.pct_change().rolling(lookback_period).std()
@@ -271,16 +271,12 @@ def simulate_factor(ohlcv_data: pd.DataFrame,
         # 주문 생성
         rebalance(dt=date, data=ohlcv, account=account, weights=weights)
 
-    # 리발란싱 날짜만 남기기
-    account.account_history = [item for item in account.account_history if
-                               item['date'].date() in month_end.date]
-
     return account
 
 
 if __name__ == '__main__':
     # 데이터 시작과 끝 날짜 정의
-    fromdate = '2013-04-01'
+    fromdate = '2020-04-01'
     todate = '2021-12-30'
 
     # 투자할 종목 후보 정의
@@ -318,7 +314,7 @@ if __name__ == '__main__':
                      'skip_period': 1 * 21,
                      'strategy_name': 'relative',
                      'buying_ratio': 0.1,
-                     'full_history': True},
+                     },
         'per': {'ohlcv_data': ohlcv_data_day,
                 'market_cap_data': market_cap_data,
                 'fundamental_data': fundamental_data,
@@ -327,7 +323,7 @@ if __name__ == '__main__':
                 'skip_period': 0,
                 'strategy_name': 'per',
                 'buying_ratio': 0.1,
-                'full_history': True},
+                },
         'pbr': {'ohlcv_data': ohlcv_data_day,
                 'market_cap_data': market_cap_data,
                 'fundamental_data': fundamental_data,
@@ -336,7 +332,7 @@ if __name__ == '__main__':
                 'skip_period': 0,
                 'strategy_name': 'pbr',
                 'buying_ratio': 0.1,
-                'full_history': True},
+                },
         'dividend': {'ohlcv_data': ohlcv_data_day,
                      'market_cap_data': market_cap_data,
                      'fundamental_data': fundamental_data,
@@ -345,7 +341,7 @@ if __name__ == '__main__':
                      'skip_period': 0,
                      'strategy_name': 'dividend',
                      'buying_ratio': 0.1,
-                     'full_history': True},
+                     },
         'small': {'ohlcv_data': ohlcv_data_day,
                   'market_cap_data': market_cap_data,
                   'fundamental_data': None,
@@ -354,7 +350,7 @@ if __name__ == '__main__':
                   'skip_period': 0,
                   'strategy_name': 'small',
                   'buying_ratio': 0.1,
-                  'full_history': True},
+                  },
         'lowvol': {'ohlcv_data': ohlcv_data_day,
                    'market_cap_data': None,
                    'fundamental_data': None,
@@ -363,7 +359,7 @@ if __name__ == '__main__':
                    'skip_period': 0,
                    'strategy_name': 'lowvol',
                    'buying_ratio': 0.1,
-                   'full_history': True},
+                   },
         'individual': {'ohlcv_data': ohlcv_data_day,
                        'market_cap_data': market_cap_data,
                        'fundamental_data': None,
@@ -372,7 +368,7 @@ if __name__ == '__main__':
                        'skip_period': 0,
                        'strategy_name': 'individual',
                        'buying_ratio': 0.1,
-                       'full_history': True},
+                       },
         'institutional': {'ohlcv_data': ohlcv_data_day,
                           'market_cap_data': market_cap_data,
                           'fundamental_data': None,
@@ -381,7 +377,7 @@ if __name__ == '__main__':
                           'skip_period': 0,
                           'strategy_name': 'institutional',
                           'buying_ratio': 0.1,
-                          'full_history': True},
+                          },
         'foreign': {'ohlcv_data': ohlcv_data_day,
                     'market_cap_data': market_cap_data,
                     'fundamental_data': None,
@@ -390,7 +386,7 @@ if __name__ == '__main__':
                     'skip_period': 0,
                     'strategy_name': 'foreign',
                     'buying_ratio': 0.1,
-                    'full_history': True}
+                    }
     }
 
     accounts = defaultdict(list)
